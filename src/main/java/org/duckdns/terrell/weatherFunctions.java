@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -20,9 +21,14 @@ public class weatherFunctions {
             while ((urlConnectionInputLine = urlConnectionInput.readLine()) != null) {
                 System.out.println(urlConnectionInputLine);
             }
-        } catch (FileNotFoundException e) {
+        } catch (MalformedURLException e) {
+            System.out.println("Exception Caught:");
+            e.printStackTrace();
+        } catch(FileNotFoundException e) {
+            System.out.println("Exception Caught:");
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("Exception Caught:");
             e.printStackTrace();
         }
     }
