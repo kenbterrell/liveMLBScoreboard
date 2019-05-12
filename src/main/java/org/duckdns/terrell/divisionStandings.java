@@ -10,7 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 
 import static org.duckdns.terrell.weatherFunctions.isWeatherGovAlive;
-import static org.duckdns.terrell.weatherFunctions.printWeatherGovGlossary;
 
 /**
  * Hello world!
@@ -27,7 +26,7 @@ public class divisionStandings {
         /*Validate.isTrue(args.length == 1, "usage: supply url to fetch");
         String url = args[0];*/
         String url = "https://en.wikipedia.org/wiki/Template:2019_NL_West_standings";
-        print("Fetching %s...", url);
+        System.out.println("Fetching " + url);
 
         Document doc = Jsoup.connect(url).get();
         Elements links = doc.select("a[href]");
@@ -58,28 +57,6 @@ public class divisionStandings {
             String teamAway = StringUtils.center(cols.get(6).text(), 6);
 
             System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\n", teamName, teamWins, teamLosses, teamPct, teamGB, teamHome, teamAway);
-
         }
-        printWeatherGovGlossary();
-
     }
-
-    private static void print(String msg, Object... args) {
-        System.out.println(String.format(msg, args));
-    }
-
-    private static String trim(String s, int width) {
-        if (s.length() > width)
-            return s.substring(0, width - 1) + ".";
-        else
-            return s;
-    }
-
-/*
-public static void main( String[] args )
-{
-System.out.println( "Hello World!" );
-}
-*/
-
 }
